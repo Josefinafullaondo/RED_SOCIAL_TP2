@@ -18,7 +18,7 @@ import { UsuarioActual } from '../common/decorators/usuario-actual.decorator';
 @Controller('publicaciones')
 export class PublicacionesController {
   constructor(private readonly publicacionesService: PublicacionesService) {}
-
+  @Post()
   @UseGuards(JwtCookieGuard)
   @UseInterceptors(FileInterceptor('imagen'))
   async crear(

@@ -18,10 +18,9 @@ async function bootstrap() {
       transform: true, // convierte query params (limit, offset) a números
     }),
   );
-
-  app.enableCors({
-    origin: config.get<string>('FRONTEND_URL'),
-    credentials: true, // necesario para que el navegador envíe/reciba cookies
+app.enableCors({
+    origin: true, // <--- Permite cualquier origen local automáticamente
+    credentials: true, // Necesario para que el navegador envíe/reciba cookies
   });
 
   await app.listen(config.get<number>('PORT') ?? 3000);

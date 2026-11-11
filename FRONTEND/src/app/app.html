@@ -1,0 +1,40 @@
+<div class="container">
+  <h1>Red Social UTN - Muro de Publicaciones</h1>
+
+  <!-- Formulario para crear publicación -->
+  <div class="card-form">
+    <h3>Crear Publicación</h3>
+    <textarea 
+      [(ngModel)]="textoNuevo" 
+      placeholder="¿Qué estás pensando?" 
+      rows="3">
+    </textarea>
+    
+    <div class="form-actions">
+      <input type="file" (change)="onFileSelected($event)" accept="image/*">
+      <button (click)="crearPublicacion()" [disabled]="cargando">
+        {{ cargando ? 'Publicando...' : 'Publicar' }}
+      </button>
+    </div>
+  </div>
+
+  <!-- Listado / Feed de Publicaciones -->
+  <div class="feed">
+    <div *ngFor="let pub of publicaciones" class="card-post">
+      <div class="post-header">
+        <strong>{{ pub.autor?.username || 'Usuario Anónimo' }}</strong>
+        <button class="btn-delete" (click)="eliminar(pub._id)">🗑️</button>
+      </div>
+      
+      <p class="post-text">{{ pub.texto }}</p>
+      
+      <div *ngIf="pub.imagenUrl" class="post-image">
+        <img [src]="pub.imagenUrl" alt="Imagen de la publicación">
+      </div>
+    </div>
+
+    <p *ngIf="publicaciones.length === 0" class="no-posts">
+      No hay publicaciones todavía. ¡Sé el primero en compartir algo!
+    </p>
+  </div>
+</div>

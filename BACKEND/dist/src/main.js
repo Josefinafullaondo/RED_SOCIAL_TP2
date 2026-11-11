@@ -19,7 +19,7 @@ async function bootstrap() {
         transform: true,
     }));
     app.enableCors({
-        origin: config.get('FRONTEND_URL'),
+        origin: true,
         credentials: true,
     });
     await app.listen(config.get('PORT') ?? 3000);

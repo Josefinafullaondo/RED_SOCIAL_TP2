@@ -38,6 +38,7 @@ let PublicacionesController = class PublicacionesController {
 };
 exports.PublicacionesController = PublicacionesController;
 __decorate([
+    (0, common_1.Post)(),
     (0, common_1.UseGuards)(jwt_cookie_guard_1.JwtCookieGuard),
     (0, common_1.UseInterceptors)((0, platform_express_1.FileInterceptor)('imagen')),
     __param(0, (0, common_1.Body)()),
